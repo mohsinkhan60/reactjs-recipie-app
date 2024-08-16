@@ -30,10 +30,16 @@ export const HomePage = () => {
   useEffect(() => {
     fetchRecipes("chicken");
   },[]);
+
+  const handleSearchRecipe = (e) => {
+    e.preventDefault();
+    fetchRecipes(e.target[0].value);
+  }
+
   return (
     <div className="bg-[#faf9fb] p-10 flex-1">
       <div className="h-full max-w-screen-lg mx-auto">
-        <form>
+        <form onSubmit={handleSearchRecipe}>
           <label className="flex items-center gap-2 shadow-md input">
             <Search size="24" />
             <input
